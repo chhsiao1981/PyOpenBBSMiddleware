@@ -4,7 +4,7 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="PyOpenBBSMiddleware",
+    name="openbbs-middleware",
     version="0.0.1",
     author="",
     author_email="",

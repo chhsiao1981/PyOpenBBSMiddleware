@@ -26,7 +26,7 @@ def underscore_to_lower_camelcase(the_str):
 
 the_module = sys.argv[1]
 full_name = sys.argv[2]
-project = os.path.basename(os.getcwd())
+project = sys.argv[3]
 
 logging.info('full_name: %s project: %s', full_name, project)
 

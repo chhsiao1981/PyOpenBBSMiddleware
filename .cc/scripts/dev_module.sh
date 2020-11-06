@@ -7,8 +7,9 @@ then
 fi
 
 module=$1
+package="openbbs_middleware"
 
-python .cc/gen.py module "${module}"
+python .cc/gen.py module "${module}" "${package}"
 
 parent_pkg=""
 # split module
@@ -21,7 +22,7 @@ do
   if [ "${parent_pkg}" != "" ]
   then
     echo "[INFO] to create pkg: ${parent_pkg}"
-    python .cc/gen.py pkg "${parent_pkg}"
+    python .cc/gen.py pkg "${parent_pkg}" "${package}"
     parent_pkg="${parent_pkg}."
   fi
   parent_pkg="${parent_pkg}${each_pkg}"
