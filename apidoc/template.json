@@ -1,0 +1,39 @@
+{
+    "paths": {
+        "/login": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "body",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "authenticated"
+                    },
+                    "401": {
+                        "description": "authentication failed"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "get": {
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successfully logout"
+                    }
+                }
+            }
+        }
+    }
+}
