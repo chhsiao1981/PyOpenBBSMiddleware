@@ -19,6 +19,7 @@ setuptools.setup(
         "email-validator==1.1.1",
         "Werkzeug==0.16.1",
         "gevent==20.9.0",
+        "requests==2.25.0",
 
         "flask-swagger @ git+https://github.com/chhsiao1981/flask-swagger.git@flaskswagger-with-from-file-keyword#egg=pyutil_cfg",
 
