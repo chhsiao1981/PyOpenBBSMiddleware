@@ -3,6 +3,16 @@ PyOpenBBSMiddleware
 
 Python middleware for OpenBBS.
 
+Docker
+-----
+
+You can run docker with the following steps:
+
+* `docker-compose -f docker-compose.yaml up -d`
+* `telnet localhost 8888` and register SYSOP (and other account)
+* login at `http://localhost:3457/login`
+* swagger spec at `http://localhost:3457/spec` (paste in `https://petstore.swagger.io/`)
+
 Develop
 -----
 
