@@ -6,4 +6,4 @@ host=${1:-127.0.0.1}
 
 echo "to run python: host: ${host}"
 
-python -m openbbs_middleware.main -i production.ini.template --host ${host} -p 3457
+python -m openbbs_middleware.main -i production.docker.ini --host ${host} -p 3457
