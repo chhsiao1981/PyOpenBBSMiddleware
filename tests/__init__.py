@@ -8,7 +8,6 @@ import logging
 import pyutil_cfg
 
 from openbbs_middleware import cfg
-from openbbs_middleware.utils import util_flask
 
 
 def setup():

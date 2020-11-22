@@ -5,8 +5,8 @@ import logging
 import tempfile
 
 from openbbs_middleware import cfg
-from openbbs_middleware.utils import util_flask
-from openbbs_middleware.utils.util_flask import app
+from openbbs_middleware.http_server import util_flask
+from openbbs_middleware.http_server.util_flask import app
 
 from openbbs_middleware import main
 
@@ -22,6 +22,10 @@ class TestMain(unittest.TestCase):
         pass
 
     def test_index(self):
+        '''
+        test_index
+        '''
+        '''
         logging.warning('cfg.config: %s', cfg.config)
         ret = self.app.get('/')
         self.assertEqual(200, ret.status_code)
@@ -30,3 +34,4 @@ class TestMain(unittest.TestCase):
         logging.info('ret: %s the_json: %s', ret, the_json)
         self.assertTrue(the_json.get('success'))
         self.assertTrue('index' in data)
+        '''
