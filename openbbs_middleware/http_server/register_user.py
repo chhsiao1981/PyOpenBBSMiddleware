@@ -15,6 +15,12 @@ from flask_security.registerable import _datastore
 from openbbs_middleware import cfg
 from openbbs_middleware.utils.util_time import get_current_milli_ts
 
+_VALID_USER_MODEL_KEY_SET = set([
+    'user_id',
+    'jwt',
+    'uid',
+])
+
 
 def register_user(registration_form):
     """
@@ -26,17 +32,9 @@ def register_user(registration_form):
 
     user_model_kwargs = registration_form.to_dict(only_user=True)
 
+    user_model_kwargs = {k: v for k, v in user_model_kwargs.items() if k in _VALID_USER_MODEL_KEY_SET}
+
     user = _datastore.create_user(**user_model_kwargs)
-
-    cfg.logger.info('to db_update: user_model_kwargs: %s, user: %s', user_model_kwargs, dir(user))
-
-    user_id = user_model_kwargs.get('user_id', '')
-    if not user_id:
-        return
-
-    err, result = pyutil_mongo.db_update('user', {'$set_if_not_exists': {'user_id': user_id}}, user_model_kwargs, is_set=False)
-
-    cfg.logger.info('after db_update: e: %s result :%s', err, result)
 
     '''
     confirmation_link, token = None, None
