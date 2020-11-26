@@ -21,7 +21,6 @@ class RegisterForm(ConfirmRegisterForm, NextFormMixin):
     csrf_token = uuid.uuid4()
 
     def validate(self):
-        cfg.logger.info('RegisterForm.validate: start: self: %s data: %s', dir(self), self.data)
         if not super(RegisterForm, self).validate():
             return False
 

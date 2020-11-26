@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 
-from flask_security.forms import Form, PasswordField, get_form_field_label, validators, config_value, _datastore, _security, get_message, Field, StringField
+from flask_security.forms import Form, PasswordField, get_form_field_label, validators, config_value, _datastore, _security, get_message, Field, StringField, BooleanField
 
 from openbbs_middleware import cfg
 
 from .register_form_mixin import RegisterFormMixin
-from .utils import validate_user
+from .utils import register_user
 from .utils import get_ip
 
 
@@ -21,6 +21,30 @@ class ConfirmRegisterForm(Form, RegisterFormMixin):
 
     password = PasswordField(
         get_form_field_label("password"), validators=[validators.Optional()]
+    )
+
+    email = StringField(
+        get_form_field_label("email"), validators=[validators.Optional()]
+    )
+
+    nickname = StringField(
+        get_form_field_label("nickname"), validators=[validators.Optional()]
+    )
+
+    realname = StringField(
+        get_form_field_label("realname"), validators=[validators.Optional()]
+    )
+
+    career = StringField(
+        get_form_field_label("career"), validators=[validators.Optional()]
+    )
+
+    address = StringField(
+        get_form_field_label("address"), validators=[validators.Optional()]
+    )
+
+    over18 = BooleanField(
+        get_form_field_label("over18"), validators=[validators.Optional()]
     )
 
     jwt = StringField(
@@ -68,10 +92,18 @@ class ConfirmRegisterForm(Form, RegisterFormMixin):
             password = self.password.data
             ip = get_ip()
 
-            err, jwt = validate_user(user_id, password, ip)
+            email = self.email.data
+            nickname = self.nickname.data
+            realname = self.realname.data
+            career = self.career.data
+            address = self.address.data
+            over18 = self.over18.data
+
+            err, result = register_user(user_id, password, ip, email, nickname, realname, career, address, over18)
             if err is not None:
+                self.user_id.errors = result['err']
                 return False
 
-            self.jwt.data = jwt
+            self.jwt.data = result
 
         return True
