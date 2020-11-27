@@ -1,6 +1,6 @@
 <html>
     <body>
-        <form action="/login" method="post" name="login_user_form">
+        <form action="/Account/login" method="post" name="login_user_form">
             {{ login_user_form.hidden_tag() }}
             <div>
                 <label>username</label>
@@ -14,6 +14,6 @@
                 <input type="submit" value="Submit" />
             </div>
         </form>
-        <a href="/register">register</a>
+        <a href="/Account/register">register</a>
     </body>
 </html>
