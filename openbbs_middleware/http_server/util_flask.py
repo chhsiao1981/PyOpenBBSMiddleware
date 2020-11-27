@@ -151,7 +151,10 @@ def _init_config():
 
         'SECURITY_REGISTERABLE': cfg.config.get('flask_security_registerable', True),
         'SECURITY_CONFIRMABLE': cfg.config.get('flask_security_confirmable', False),
-        'SECURITY_POST_LOGOUT_VIEW': '/login',
+        'SECURITY_LOGIN_URL': '/Account/login',
+        'SECURITY_REGISTER_URL': '/Account/register',
+        'SECURITY_LOGOUT_URL': '/Account/logout',
+        'SECURITY_POST_LOGOUT_VIEW': '/Account/login',
         'SECURITY_EMAIL_SENDER': cfg.config.get('mail_sender', 'noreply@localhost'),
         'MAIL_DEBUG': True,
         'MAIL_SERVER': cfg.config.get('mail_server', 'localhost'),
