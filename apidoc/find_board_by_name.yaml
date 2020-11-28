@@ -4,27 +4,55 @@ tags:
   - board
 definitions:
 parameters:
-  - name: 'name(string)'
+  - name: 'name'
     in: 'body'
     required: true
     description: "sub-string of the board-name (bid) to search for."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
+  - name: 'start'
+    in: 'body'
+    required: false
+    description: "starting bid, '' if find in the 1st time."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
+      default: ''
+  - name: 'max'
+    in: 'body'
+    required: false
+    description: "max number of the returned boards, -1 returns all the boards"
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: number
+      default: -1
 responses:
   200:
     description:
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: object
       properties:
-        bid:
-          type: string
-        title:
-          type: string
-        flag:
-          type: number
-        cat:
-          type: string
-        nuser:
-          type: number
-        bm:
+        list:
           type: array
           items:
-            type: string
+            type: object
+            properties:
+              bid:
+                type: string
+              title:
+                type: string
+              flag:
+                type: number
+              cat:
+                type: string
+              nuser:
+                type: number
+              bm:
+                type: array
+                items:
+                  type: string
+        next:
+          type: string
+          description: next bid. '' if reached end-of-the-list.
