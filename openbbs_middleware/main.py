@@ -119,6 +119,19 @@ def _get_user_info():
     return util_flask.process_result(err, result)
 
 
+from openbbs_middleware.api.get_user_post_list import get_user_post_list
+@app.route('/GetUserPostList')
+@crossdomain()
+@csrf.exempt
+def _get_user_post_list():
+    """
+    swagger_from_file: apidoc/get_user_post_list.yaml
+    """
+    params = util_flask.process_params()
+    err, result = get_user_post_list(params)
+    return util_flask.process_result(err, result)
+
+
 @app.route('/<path:path>')
 def send_root_path(path):
     """static files.

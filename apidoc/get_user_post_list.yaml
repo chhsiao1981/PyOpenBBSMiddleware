@@ -1,9 +1,17 @@
-GetPopularPost
+GetUserPostList
 ---
 tags:
+  - user
   - post
-description: get popular post list, sorted by time (from newest to oldest.)
+description: get ustr post list, sorted by time (from newest to oldest.)
 parameters:
+  - name: 'username'
+    in: 'body'
+    required: true
+    description: "sub-string of the board-name (bid) to search for."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
   - name: 'newestTime'
     in: 'body'
     required: false
