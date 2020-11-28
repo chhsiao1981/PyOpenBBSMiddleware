@@ -9,7 +9,7 @@ def get_popular_post(params):
                 'pid': 'pid',
                 'postTime': 1234567891,
                 'updateTime': 1234567891,
-                'title': '最新的文章',
+                'title': '我在哪裡？',
                 'bid': 'WhoAmI',
                 'read': False,
                 'flag': 0,
@@ -18,7 +18,8 @@ def get_popular_post(params):
                 'nRecommend': -1000,
             },
         ],
-        'next': 'pid2',
+        'nextBID': 'WhoAmI',
+        'nextPID': 'pid2',
         'nextTime': 1234567890,
     }
 

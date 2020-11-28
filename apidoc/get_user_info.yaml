@@ -5,12 +5,7 @@ tags:
 definitions:
 parameters:
   - name: 'username'
-    in: 'body'
-    required: true
-    description: "username"
-    schema:
-      '$id': https://json-schema.org/draft/2019-09/output/schema
-      type: string
+    in: 'path'
   - name: 'fields'
     in: 'body'
     required: true

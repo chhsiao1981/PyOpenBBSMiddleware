@@ -1,32 +1,33 @@
-GetUserPostList
+GetUserCommentList
 ---
 tags:
   - user
   - post
-description: get user post list, sorted by time (from newest to oldest.)
+description: get user comment list, sorted by time (from newest to oldest.)
 parameters:
   - name: 'username'
     in: 'path'
+    required: true
   - name: 'newestTime'
     in: 'body'
     required: false
-    description: "the newest-time in the list. -1 will starting from newest post if not specified. required if not the 1st-time."
+    description: "the newest-time in the list. -1 will starting from newest comment if not specified. required if not the 1st-time."
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: number
       default: -1
-  - name: 'startBoardID'
+  - name: 'startPostID'
     in: 'body'
     required: false
-    description: "starting board-id, '' if not specified. required if not the 1st-time"
+    description: "starting postID, '' if not specified. required if not the 1st-time"
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: string
       default: ''
-  - name: 'startPostID'
+  - name: 'startCommentID'
     in: 'body'
     required: false
-    description: "starting post-id, '' if not specified. required if not the 1st-time"
+    description: "starting commentID, '' if not specified. required if not the 1st-time"
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: string
@@ -57,25 +58,18 @@ responses:
               pid:
                 type: string
                 description: post-id
+              cid:
+                type: string
+                description: comment-id
               postTime:
                 type: number
                 description: post-time in unix-time
-              updateTime:
-                type: number
-                description: update-time in unix-time
               title:
                 type: string
-              read:
-                type: boolean
-                description: already-read or not.
-              flag:
-                type: number
-              cat:
+                description: title of the post.
+              comment:
                 type: string
-                description: category
-              nReader:
-                type: number
-              nRecommend:
+              flag:
                 type: number
         nextBID:
           type: string
@@ -83,6 +77,9 @@ responses:
         nextPID:
           type: string
           description: next post-id. '' if reached end-of-the-list.
+        nextCID:
+          type: string
+          description: next comment-id. '' if reached end-of-the-list.
         nextTime:
           type: number
           description: next searching-time. 0 if reached end-of-the-list.

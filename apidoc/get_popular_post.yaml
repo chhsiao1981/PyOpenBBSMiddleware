@@ -40,6 +40,9 @@ responses:
           items:
             type: object
             properties:
+              bid:
+                type: string
+                description: board-id (brdname)
               pid:
                 type: string
                 description: post-id
@@ -51,9 +54,6 @@ responses:
                 description: update-time in unix-time
               title:
                 type: string
-              bid:
-                type: string
-                description: board-id (brdname)
               read:
                 type: boolean
                 description: already-read or not.
@@ -66,9 +66,12 @@ responses:
                 type: number
               nRecommend:
                 type: number
-        next:
+        nextBID:
           type: string
-          description: next pid. '' if reached end-of-the-list.
+          description: next board-id. '' if reached end-of-the-list.
+        nextPID:
+          type: string
+          description: next post-id. '' if reached end-of-the-list.
         nextTime:
           type: number
           description: next searching-time. 0 if reached end-of-the-list.

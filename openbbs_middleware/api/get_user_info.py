@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def get_user_info(params):
+def get_user_info(username, params):
     '''XXX fake-data'''
     result = {
         'uid': '238457238547038',

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def get_favorite_board(params):
+def get_favorite_board(username, params):
     '''XXX fake-data'''
     result = {
         'list': [

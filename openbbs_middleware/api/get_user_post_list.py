@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def get_user_post_list(params):
+def get_user_post_list(username, params):
     '''XXX fake-data'''
     result = {
         'list': [
@@ -9,7 +9,7 @@ def get_user_post_list(params):
                 'pid': 'pid',
                 'postTime': 1234567891,
                 'updateTime': 1234567891,
-                'title': '最新的文章',
+                'title': '我～是～誰～？',
                 'bid': 'WhoAmI',
                 'read': False,
                 'flag': 0,
@@ -18,7 +18,8 @@ def get_user_post_list(params):
                 'nRecommend': -1000,
             },
         ],
-        'next': 'pid2',
+        'nextBID': 'WhoAmI',
+        'nextPID': 'pid2',
         'nextTime': 1234567890,
     }
 

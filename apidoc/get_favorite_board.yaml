@@ -1,11 +1,12 @@
 GetFavoriteBoard
 ---
 tags:
+  - user
   - board
 definitions:
 parameters:
-  - name: 'username(string)'
-    in: 'body'
+  - name: 'username'
+    in: 'path'
     required: true
   - name: 'start'
     in: 'body'
