@@ -14,7 +14,7 @@ parameters:
   - name: 'start'
     in: 'body'
     required: false
-    description: "starting bid, '' if find in the 1st time."
+    description: "starting bid, '' if fetch from the beginning."
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: string
@@ -22,11 +22,11 @@ parameters:
   - name: 'max'
     in: 'body'
     required: false
-    description: "max number of the returned boards, -1 returns all the boards"
+    description: "max number of the returned boards, requiring <= 1000"
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: number
-      default: -1
+      default: 1000
 responses:
   200:
     description:
@@ -54,8 +54,9 @@ responses:
                 type: array
                 items:
                   type: string
-              readAll:
+              read:
                 type: boolean
+                description: reached the end of the post-list (or not).
         next:
           type: string
           description: next bid. '' if reached end-of-the-list.

@@ -2,7 +2,7 @@
 
 
 def get_favorite_board(username, params):
-    '''XXX fake-data'''
+    '''XXX mock-data'''
     result = {
         'list': [
             {
@@ -12,7 +12,7 @@ def get_favorite_board(username, params):
                 'cat': '新手',
                 'nuser': 100,
                 'bm': ['teemo', 'okcool'],
-                'readAll': False,
+                'read': False,
             },
         ],
         'next': '',

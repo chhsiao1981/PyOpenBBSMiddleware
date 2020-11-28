@@ -1,8 +1,0 @@
-login
----
-tags:
-  - login
-definitions:
-responses:
-  200:
-    description: login success

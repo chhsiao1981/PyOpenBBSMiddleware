@@ -2,7 +2,7 @@
 
 
 def get_user_info(username, params):
-    '''XXX fake-data'''
+    '''XXX mock-data'''
     result = {
         'uid': '238457238547038',
         'username': 'teemo',

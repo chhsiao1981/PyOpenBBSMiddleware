@@ -2,15 +2,15 @@
 
 
 def get_popular_post(params):
-    '''XXX fake-data'''
+    '''XXX mock-data'''
     result = {
         'list': [
             {
+                'bid': 'WhoAmI',
                 'pid': 'pid',
                 'postTime': 1234567891,
                 'updateTime': 1234567891,
                 'title': '我在哪裡？',
-                'bid': 'WhoAmI',
                 'read': False,
                 'flag': 0,
                 'cat': '問題',

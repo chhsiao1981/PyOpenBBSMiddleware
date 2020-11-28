@@ -2,7 +2,7 @@
 
 
 def get_user_post_list(username, params):
-    '''XXX fake-data'''
+    '''XXX mock-data'''
     result = {
         'list': [
             {

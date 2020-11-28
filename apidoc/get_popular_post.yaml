@@ -7,15 +7,23 @@ parameters:
   - name: 'newestTime'
     in: 'body'
     required: false
-    description: "the newest-time in the list. -1 will starting from newest post if not specified. required if not the 1st-time."
+    description: "the newest-time in the list. -1 will starting from newest post if not specified. required if is a continuing-fetch (not fetching from the beginning)."
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: number
       default: -1
-  - name: 'startID'
+  - name: 'startBID'
     in: 'body'
     required: false
-    description: "starting postid, '' if not specified. required if not the 1st-time"
+    description: "starting board-id, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
+      default: ''
+  - name: 'startPID'
+    in: 'body'
+    required: false
+    description: "starting post-id, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: string
