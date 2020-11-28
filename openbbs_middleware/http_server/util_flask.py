@@ -60,6 +60,10 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 
+def process_params():
+    return None
+
+
 def process_result(err, the_dict, status_code=200, mime='application/json', headers=None):
     """process result
 

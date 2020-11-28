@@ -1,0 +1,30 @@
+FindBoardByName
+---
+tags:
+  - board
+definitions:
+parameters:
+  - name: 'name(string)'
+    in: 'body'
+    required: true
+    description: "sub-string of the board-name (bid) to search for."
+responses:
+  200:
+    description:
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      properties:
+        bid:
+          type: string
+        title:
+          type: string
+        flag:
+          type: number
+        cat:
+          type: string
+        nuser:
+          type: number
+        bm:
+          type: array
+          items:
+            type: string

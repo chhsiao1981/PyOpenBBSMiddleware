@@ -36,7 +36,7 @@ def before_request():
 
 @app.route('/')
 @login_required
-def index():
+def _index():
     """
     swagger_from_file: apidoc/index.yaml
     """
@@ -54,13 +54,43 @@ def spec():
     return jsonify(swag)
 
 
-'''
-@app.route('/login', methods=['POST'])
-def login():
-    cfg.logger.info('login-post: start')
+from openbbs_middleware.api.get_popular_post import get_popular_post
+@app.route('/GetPopularPost')
+@crossdomain()
+@csrf.exempt
+def _get_popular_post():
+    """
+    swagger_from_file: apidoc/get_popular_post.yaml
+    """
+    params = util_flask.process_params()
+    err, result = get_popular_post(params)
+    return util_flask.process_result(err, result)
 
-    return ''
-'''
+
+from openbbs_middleware.api.get_favorite_board import get_favorite_board
+@app.route('/GetFavoriteBoard')
+@crossdomain()
+@csrf.exempt
+def _get_favorite_board():
+    """
+    swagger_from_file: apidoc/get_favorite_board.yaml
+    """
+    params = util_flask.process_params()
+    err, result = get_favorite_board(params)
+    return util_flask.process_result(err, result)
+
+
+from openbbs_middleware.api.find_board_by_name import find_board_by_name
+@app.route('/FindBoardByName')
+@crossdomain()
+@csrf.exempt
+def _find_board_by_name():
+    """
+    swagger_from_file: apidoc/find_board_by_name.yaml
+    """
+    params = util_flask.process_params()
+    err, result = find_board_by_name(params)
+    return util_flask.process_result(err, result)
 
 
 @app.route('/<path:path>')
