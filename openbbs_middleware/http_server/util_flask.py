@@ -60,6 +60,10 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 
+def process_params():
+    return None
+
+
 def process_result(err, the_dict, status_code=200, mime='application/json', headers=None):
     """process result
 
@@ -85,9 +89,9 @@ def process_result(err, the_dict, status_code=200, mime='application/json', head
         headers['X-WEBAUTH-USER'] = username
 
     if err:
-        http_result = {'success': False, 'err': str(err)}
+        http_result = {'err': str(err)}
     else:
-        http_result = {'success': True, 'data': the_dict}
+        http_result = the_dict
 
     return json.dumps(http_result), status_code, headers
 

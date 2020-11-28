@@ -1,0 +1,62 @@
+FindBoardByName
+---
+tags:
+  - board
+definitions:
+parameters:
+  - name: 'name'
+    in: 'body'
+    required: true
+    description: "sub-string of the board-name (bid) to search for."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
+  - name: 'start'
+    in: 'body'
+    required: false
+    description: "starting bid, '' if fetch from the beginning."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
+      default: ''
+  - name: 'max'
+    in: 'body'
+    required: false
+    description: "max number of the returned boards, requiring <= 1000"
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: number
+      default: 1000
+responses:
+  200:
+    description:
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: object
+            properties:
+              bid:
+                type: string
+              title:
+                type: string
+              flag:
+                type: number
+              cat:
+                type: string
+                description: category
+              nuser:
+                type: number
+              bm:
+                type: array
+                items:
+                  type: string
+              read:
+                type: boolean
+                description: reached the end of the post-list (or not).
+        next:
+          type: string
+          description: next bid. '' if reached end-of-the-list.

@@ -1,0 +1,85 @@
+GetPopularPost
+---
+tags:
+  - post
+description: get popular post list, sorted by time (from newest to oldest.)
+parameters:
+  - name: 'newestTime'
+    in: 'body'
+    required: false
+    description: "the newest-time in the list. -1 will starting from newest post if not specified. required if is a continuing-fetch (not fetching from the beginning)."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: number
+      default: -1
+  - name: 'startBID'
+    in: 'body'
+    required: false
+    description: "starting board-id, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
+      default: ''
+  - name: 'startPID'
+    in: 'body'
+    required: false
+    description: "starting post-id, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
+      default: ''
+  - name: 'max'
+    in: 'body'
+    required: false
+    description: "max number of the returned posts, require <= 1000"
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: number
+      default: 1000
+responses:
+  200:
+    description:
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: object
+            properties:
+              bid:
+                type: string
+                description: board-id (brdname)
+              pid:
+                type: string
+                description: post-id
+              postTime:
+                type: number
+                description: post-time in unix-time
+              updateTime:
+                type: number
+                description: update-time in unix-time
+              title:
+                type: string
+              read:
+                type: boolean
+                description: already-read or not.
+              flag:
+                type: number
+              cat:
+                type: string
+                description: category
+              nReader:
+                type: number
+              nRecommend:
+                type: number
+        nextBID:
+          type: string
+          description: next board-id. '' if reached end-of-the-list.
+        nextPID:
+          type: string
+          description: next post-id. '' if reached end-of-the-list.
+        nextTime:
+          type: number
+          description: next searching-time. 0 if reached end-of-the-list.

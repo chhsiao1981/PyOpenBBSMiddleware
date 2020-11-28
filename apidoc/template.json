@@ -2,6 +2,7 @@
     "paths": {
         "/Account/login": {
             "post": {
+                "tags": ["login"],
                 "parameters": [
                     {
                         "name": "username",
@@ -26,6 +27,7 @@
         },
         "/Account/register": {
             "post": {
+                "tags": ["login"],
                 "parameters": [
                     {
                         "name": "Accept: application/json",
@@ -90,6 +92,7 @@
         },
         "/Account/logout": {
             "get": {
+                "tags": ["login"],
                 "parameters": [
                 ],
                 "responses": {

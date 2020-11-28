@@ -4,4 +4,4 @@ flaskswagger openbbs_middleware.main:app --host localhost:5000 --base-path / --o
 
 docker container stop swagger-ui
 docker container rm swagger-ui
-docker run --name swagger-ui -p 5000:8080 -e SWAGGER_JSON=/foo/swagger.json -v ${PWD}/swagger:/foo swaggerapi/swagger-ui
+docker run -itd --restart always --name swagger-ui -p 5000:8080 -e SWAGGER_JSON=/foo/swagger.json -v ${PWD}/swagger:/foo swaggerapi/swagger-ui
