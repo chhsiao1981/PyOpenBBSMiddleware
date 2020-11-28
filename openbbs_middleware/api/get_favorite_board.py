@@ -12,6 +12,7 @@ def get_favorite_board(params):
                 'cat': '新手',
                 'nuser': 100,
                 'bm': ['teemo', 'okcool'],
+                'readAll': False,
             },
         ],
         'next': '',

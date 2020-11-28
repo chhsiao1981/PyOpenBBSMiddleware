@@ -93,6 +93,32 @@ def _find_board_by_name():
     return util_flask.process_result(err, result)
 
 
+from openbbs_middleware.api.get_popular_board_list import get_popular_board_list
+@app.route('/GetPopularBoardList')
+@crossdomain()
+@csrf.exempt
+def _get_popular_board_list():
+    """
+    swagger_from_file: apidoc/get_popular_board_list.yaml
+    """
+    params = util_flask.process_params()
+    err, result = get_popular_board_list(params)
+    return util_flask.process_result(err, result)
+
+
+from openbbs_middleware.api.get_user_info import get_user_info
+@app.route('/GetUserInfo')
+@crossdomain()
+@csrf.exempt
+def _get_user_info():
+    """
+    swagger_from_file: apidoc/get_user_info.yaml
+    """
+    params = util_flask.process_params()
+    err, result = get_user_info(params)
+    return util_flask.process_result(err, result)
+
+
 @app.route('/<path:path>')
 def send_root_path(path):
     """static files.

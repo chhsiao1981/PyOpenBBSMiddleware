@@ -12,6 +12,7 @@ def find_board_by_name(params):
                 'cat': '新手',
                 'nuser': 100,
                 'bm': ['teemo', 'okcool'],
+                'readAll': False,
             },
         ],
         'next': '',

@@ -49,6 +49,8 @@ responses:
                 type: array
                 items:
                   type: string
+              readAll:
+                type: boolean
         next:
           type: string
           description: next bid

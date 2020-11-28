@@ -1,16 +1,9 @@
-FindBoardByName
+GetPopularBoardList
 ---
 tags:
   - board
 definitions:
 parameters:
-  - name: 'name'
-    in: 'body'
-    required: true
-    description: "sub-string of the board-name (bid) to search for."
-    schema:
-      '$id': https://json-schema.org/draft/2019-09/output/schema
-      type: string
   - name: 'start'
     in: 'body'
     required: false
@@ -47,7 +40,6 @@ responses:
                 type: number
               cat:
                 type: string
-                description: category
               nuser:
                 type: number
               bm:
@@ -58,4 +50,4 @@ responses:
                 type: boolean
         next:
           type: string
-          description: next bid. '' if reached end-of-the-list.
+          description: next bid
