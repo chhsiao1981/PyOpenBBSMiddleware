@@ -5,9 +5,12 @@ services:
     ports:
       - "127.0.0.1:8888:8888"
       - "127.0.0.1:48763:48763"
+    restart: always
   mongo:
     image: mongo:4.4.2
+    restart: always
   openbbs-middleware:
     image: chhsiao1981/openbbs_middleware:dev
     ports:
       - "127.0.0.1:3457:3457"
+    restart: always
