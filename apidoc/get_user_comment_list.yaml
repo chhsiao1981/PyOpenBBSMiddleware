@@ -1,0 +1,84 @@
+GetUserCommentList
+---
+tags:
+  - user
+  - post
+description: get user comment list, sorted by time (from newest to oldest.)
+parameters:
+  - name: 'username'
+    in: 'path'
+  - name: 'newestTime'
+    in: 'body'
+    required: false
+    description: "the newest-time in the list. -1 will starting from newest comment. required if is a continuing-fetch (not fetching from the beginning)."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: number
+      default: -1
+  - name: 'startPostID'
+    in: 'body'
+    required: false
+    description: "starting postID, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
+      default: ''
+  - name: 'startCommentID'
+    in: 'body'
+    required: false
+    description: "starting commentID, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: string
+      default: ''
+  - name: 'max'
+    in: 'body'
+    required: false
+    description: "max number of the returned posts, require <= 1000"
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: number
+      default: 1000
+responses:
+  200:
+    description:
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: object
+            properties:
+              bid:
+                type: string
+                description: board-id (brdname)
+              pid:
+                type: string
+                description: post-id
+              cid:
+                type: string
+                description: comment-id
+              postTime:
+                type: number
+                description: post-time in unix-time
+              title:
+                type: string
+                description: title of the post.
+              comment:
+                type: string
+              flag:
+                type: number
+        nextBID:
+          type: string
+          description: next board-id. '' if reached end-of-the-list.
+        nextPID:
+          type: string
+          description: next post-id. '' if reached end-of-the-list.
+        nextCID:
+          type: string
+          description: next comment-id. '' if reached end-of-the-list.
+        nextTime:
+          type: number
+          description: next searching-time. 0 if reached end-of-the-list.
