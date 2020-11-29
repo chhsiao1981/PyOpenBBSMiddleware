@@ -7,8 +7,8 @@ parameters:
   - name: 'username'
     in: 'path'
   - name: 'fields'
-    in: 'body'
-    required: true
+    in: 'query'
+    required: false
     description: "fields to retrieve"
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
@@ -22,10 +22,11 @@ responses:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: object
       properties:
+        usn:
+          type: string
         uid:
           type: string
-        username:
-          type: string
+          description: username
         nickname:
           type: string
         realname:

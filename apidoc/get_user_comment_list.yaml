@@ -2,29 +2,29 @@ GetUserCommentList
 ---
 tags:
   - user
-  - post
+  - comment
 description: get user comment list, sorted by time (from newest to oldest.)
 parameters:
   - name: 'username'
     in: 'path'
   - name: 'newestTime'
-    in: 'body'
+    in: 'query'
     required: false
     description: "the newest-time in the list. -1 will starting from newest comment. required if is a continuing-fetch (not fetching from the beginning)."
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: number
       default: -1
-  - name: 'startPostID'
-    in: 'body'
+  - name: 'startAID'
+    in: 'query'
     required: false
     description: "starting postID, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: string
       default: ''
-  - name: 'startCommentID'
-    in: 'body'
+  - name: 'startCID'
+    in: 'query'
     required: false
     description: "starting commentID, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
     schema:
@@ -32,7 +32,7 @@ parameters:
       type: string
       default: ''
   - name: 'max'
-    in: 'body'
+    in: 'query'
     required: false
     description: "max number of the returned posts, require <= 1000"
     schema:
@@ -51,12 +51,18 @@ responses:
           items:
             type: object
             properties:
+              bsn:
+                type: string
               bid:
                 type: string
                 description: board-id (brdname)
-              pid:
+              asn:
                 type: string
-                description: post-id
+              aid:
+                type: string
+                description: article-id
+              csn:
+                type: string
               cid:
                 type: string
                 description: comment-id
@@ -65,7 +71,7 @@ responses:
                 description: post-time in unix-time
               title:
                 type: string
-                description: title of the post.
+                description: title of the article.
               comment:
                 type: string
               flag:
@@ -73,9 +79,9 @@ responses:
         nextBID:
           type: string
           description: next board-id. '' if reached end-of-the-list.
-        nextPID:
+        nextAID:
           type: string
-          description: next post-id. '' if reached end-of-the-list.
+          description: next article-id. '' if reached end-of-the-list.
         nextCID:
           type: string
           description: next comment-id. '' if reached end-of-the-list.
