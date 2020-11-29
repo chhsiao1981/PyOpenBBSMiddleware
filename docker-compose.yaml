@@ -6,9 +6,13 @@ services:
       - "127.0.0.1:8888:8888"
       - "127.0.0.1:48763:48763"
     restart: always
+    volumes:
+      - ${BBSHOME}:/home/bbs
   mongo:
     image: mongo:4.4.2
     restart: always
+    volumes:
+      - /var/lib/mongo:/var/lib/mongo
   openbbs-middleware:
     image: chhsiao1981/openbbs_middleware:dev
     ports:
