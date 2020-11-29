@@ -12,7 +12,7 @@ services:
     image: mongo:4.4.2
     restart: always
     volumes:
-      - /var/lib/mongo:/var/lib/mongo
+      - /var/lib/mongo:/data
   openbbs-middleware:
     image: chhsiao1981/openbbs_middleware:dev
     ports:
