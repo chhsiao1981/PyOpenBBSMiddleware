@@ -1,5 +1,4 @@
 {
-    "host": "173.255.216.176:3457",
     "paths": {
         "/Account/login": {
             "post": {
