@@ -8,16 +8,16 @@ parameters:
   - name: 'username'
     in: 'path'
     required: true
-  - name: 'start'
-    in: 'body'
+  - name: 'startBID'
+    in: query
     required: false
-    description: "starting bid, '' if fetch from the beginning."
+    description: "starting board-id, '' if fetch from the beginning."
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: string
       default: ''
   - name: 'max'
-    in: 'body'
+    in: query
     required: false
     description: "max number of the returned boards, requiring <= 1000"
     schema:
@@ -36,23 +36,34 @@ responses:
           items:
             type: object
             properties:
+              bsn:
+                type: string
               bid:
                 type: string
               title:
                 type: string
               flag:
                 type: number
+              boardType:
+                type: number
+                description: board-category-id (gid)
               cat:
                 type: string
-              nuser:
+                description: board-category (string)
+              onlineCount:
                 type: number
-              bm:
+              moderators:
                 type: array
                 items:
-                  type: string
+                  type: object
+                  properties:
+                    usn:
+                      type: string
+                    uid:
+                      type: string
               read:
                 type: boolean
                 description: reached the end of the post-list (or not).
-        next:
+        nextBID:
           type: string
-          description: next bid, '' if reached end-of-the-list.
+          description: next board-id, '' if reached end-of-the-list.

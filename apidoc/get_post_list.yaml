@@ -1,27 +1,30 @@
-GetPopularPost
+GetPostList
 ---
 tags:
+  - board
   - article
-description: get popular post list, sorted by time (from newest to oldest.)
+description: get post list by a board, sorted by time (from oldest to newest.)
 parameters:
-  - name: 'startTime'
-    in: 'query'
+  - name: 'board'
+    in: path
+  - name: 'ascending'
+    in: query
     required: false
-    description: "the newest-time in the list. -1 will starting from newest post if not specified. required if is a continuing-fetch (not fetching from the beginning)."
+    description: 'sort timestamp starting from oldest (ascending: true) or from newest (ascending: false)'
+    schema:
+      '$id': https://json-schema.org/draft/2019-09/output/schema
+      type: boolean
+      default: true
+  - name: 'startTime'
+    in: query
+    required: false
+    description: "the start-time in the list. -1 will starting from oldest (ascending: true) or from newest (ascending: false) post if not specified. required if is a continuing-fetch (not fetching from the beginning)."
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
       type: number
       default: -1
-  - name: 'startBID'
-    in: 'query'
-    required: false
-    description: "starting board-id, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
-    schema:
-      '$id': https://json-schema.org/draft/2019-09/output/schema
-      type: string
-      default: ''
   - name: 'startAID'
-    in: 'query'
+    in: query
     required: false
     description: "starting article-id, '' if not specified. required if is a continuing-fetch (not fetching from the beginning)."
     schema:
@@ -29,7 +32,7 @@ parameters:
       type: string
       default: ''
   - name: 'max'
-    in: 'query'
+    in: query
     required: false
     description: "max number of the returned posts, require <= 1000"
     schema:
@@ -48,12 +51,6 @@ responses:
           items:
             type: object
             properties:
-              bsn:
-                type: string
-                description: board-sn
-              bid:
-                type: string
-                description: board-id (brdname)
               asn:
                 type: string
                 description: article-sn
@@ -94,9 +91,6 @@ responses:
                 type: number
               nRecommend:
                 type: number
-        nextBID:
-          type: string
-          description: next board-id. '' if reached end-of-the-list.
         nextAID:
           type: string
           description: next article-id. '' if reached end-of-the-list.

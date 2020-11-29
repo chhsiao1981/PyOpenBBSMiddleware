@@ -2,11 +2,15 @@
 
 
 def get_user_comment_list(username, params):
+    '''XXX mock-data'''
     result = {
         'list': [
             {
+                'bsn': 'sn-SYSOP',
                 'bid': 'SYSOP',
-                'pid': 'pid2',
+                'asn': 'sn-aid2',
+                'aid': 'aid2',
+                'csn': 'sn-cid3',
                 'cid': 'cid3',
                 'postTime': 1234567891,
                 'title': '[公告] 你誰啊, 亂公告',
@@ -15,7 +19,7 @@ def get_user_comment_list(username, params):
             },
         ],
         'nextBID': 'Joke',
-        'nextPID': 'pid1',
+        'nextAID': 'aid1',
         'nextCID': 'cid2',
         'nextTime': 1234567890,
     }

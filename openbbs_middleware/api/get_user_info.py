@@ -4,8 +4,8 @@
 def get_user_info(username, params):
     '''XXX mock-data'''
     result = {
-        'uid': '238457238547038',
-        'username': 'teemo',
+        'usn': '238457238547038',
+        'uid': 'teemo',
         'nickname': '提摩',
         'realname': '真 . 提摩',
         'nLoginDays': 1,
