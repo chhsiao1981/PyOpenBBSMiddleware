@@ -119,7 +119,7 @@
                         "name": "session",
                         "in": "header",
                         "required": true
-                    },
+                    }
                 ],
                 "responses": {
                     "200": {
