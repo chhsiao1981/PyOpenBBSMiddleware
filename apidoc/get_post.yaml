@@ -11,12 +11,11 @@ parameters:
   - name: 'fields'
     in: 'query'
     required: false
-    description: 'fields to retrieve'
+    description: "fields to retrieve, separated by ',' ex: aid,postTime,updateTime "
     schema:
       '$id': https://json-schema.org/draft/2019-09/output/schema
-      type: array
-      items:
-        type: string
+      type: string
+      default: ''
 responses:
   200:
     description:
