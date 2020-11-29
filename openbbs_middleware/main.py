@@ -64,7 +64,7 @@ def spec():
 
 
 from openbbs_middleware.api.get_popular_post import get_popular_post
-@app.route(_with_app_prefix('/Article/Popular'))
+@app.route(_with_app_prefix('/ArticlePopular'))
 @crossdomain()
 @csrf.exempt
 def _get_popular_post():
@@ -77,7 +77,7 @@ def _get_popular_post():
 
 
 from openbbs_middleware.api.get_favorite_board import get_favorite_board
-@app.route(_with_app_prefix('/Board/Favorite/<username>'))
+@app.route(_with_app_prefix('/BoardFavorite/<username>'))
 @crossdomain()
 @csrf.exempt
 def _get_favorite_board(username):
@@ -90,7 +90,7 @@ def _get_favorite_board(username):
 
 
 from openbbs_middleware.api.find_board_by_name import find_board_by_name
-@app.route(_with_app_prefix('/Board/Search'))
+@app.route(_with_app_prefix('/BoardSearch'))
 @crossdomain()
 @csrf.exempt
 def _find_board_by_name():
@@ -103,7 +103,7 @@ def _find_board_by_name():
 
 
 from openbbs_middleware.api.get_popular_board_list import get_popular_board_list
-@app.route(_with_app_prefix('/Board/Popular'))
+@app.route(_with_app_prefix('/BoardPopular'))
 @crossdomain()
 @csrf.exempt
 def _get_popular_board_list():

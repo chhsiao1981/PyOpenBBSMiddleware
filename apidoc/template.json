@@ -1,9 +1,20 @@
 {
+    "host": "173.255.216.176:3457",
     "paths": {
         "/Account/login": {
             "post": {
                 "tags": ["login"],
                 "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "formData",
+                        "required": true
+                    },
                     {
                         "name": "username",
                         "in": "formData",
@@ -29,6 +40,16 @@
             "post": {
                 "tags": ["login"],
                 "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "formData",
+                        "required": true
+                    },
                     {
                         "name": "Accept: application/json",
                         "in": "header",
@@ -94,6 +115,11 @@
             "get": {
                 "tags": ["login"],
                 "parameters": [
+                    {
+                        "name": "session",
+                        "in": "header",
+                        "required": true
+                    },
                 ],
                 "responses": {
                     "200": {
